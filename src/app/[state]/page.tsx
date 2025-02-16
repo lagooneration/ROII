@@ -45,7 +45,14 @@ export default function StatePage({ params }: StatePageProps) {
 
   return (
     <>
-      <Hero title={stateData.content.hero.title} description={stateData.content.hero.description} />
+      <Hero 
+      title={stateData.content.hero.title} 
+      description={stateData.content.hero.description} 
+      button={{
+        children: "Know More",
+        href: "/some-path"
+      }}
+      />
       {coursesGridData && (
         <CoursesGrid 
           heading={coursesGridData.heading} 

@@ -1,14 +1,25 @@
 import { Bounded } from "@/components/Bounded";
+import { ButtonLink } from "@/components/ButtonLink";
 import { Heading } from "@/components/Heading";
 import { TallLogo } from "@/components/TallLogo";
+// import { Pendulum } from "@/components/ui/Pendulum";
 import { WideLogo } from "@/components/WideLogo";
+import { Experience } from "./Experience";
 
 interface HeroProps {
   title: string;
   description: string;
+  button: {
+    children: string;
+    href: string;
+  };
 }
 
-export function Hero({ title, description }: HeroProps) {
+export function Hero({ title, description, button }: HeroProps) {
+  if (!button?.href) {
+    return null;
+  }
+
   return (
     <Bounded
       className="bg-brand-lime relative h-dvh overflow-hidden text-zinc-800 bg-texture"
@@ -27,11 +38,31 @@ export function Hero({ title, description }: HeroProps) {
             {title}
             <p>{description}</p>
           </div>
-          <button className="bg-brand-purple text-white px-4 py-2 rounded-md">
-            Know More
-          </button>
+          <ButtonLink 
+            href={button.href} 
+            theme="purple" 
+            size="lg" 
+            icon="arrow" 
+            className="z-20 mt-2 block"
+          >
+            {button.children}
+          </ButtonLink>
         </div>
       </div>
+      {/* <Experience
+        position={[0.6, -.3, 0.3]}
+        rotation={[0, -Math.PI/4, 0]}
+        scale={.06}
+      /> */}
     </Bounded>
   );
 }
+
+Hero.defaultProps = {
+  title: "",
+  description: "",
+  button: {
+    children: "Learn More",
+    href: "#",
+  },
+};

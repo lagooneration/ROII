@@ -2,13 +2,13 @@ import { JSX } from "react/jsx-runtime";
 import { Bounded } from "@/components/Bounded";
 import { Heading } from "@/components/Heading";
 import React from "react";
-import { ConsultantsData } from "@/constants/consultants";
+import { CONSULTANTS } from "@/constants/consultants";
 import { SlideIn } from "@/components/SlideIn";
 import { Consultant } from "./Consultant";
 
 interface TeamGridProps {
   heading: string;
-  consultants: ConsultantsData[];
+  consultants: typeof CONSULTANTS;
 }
 
 const TeamGrid = ({ heading, consultants }: TeamGridProps): JSX.Element => {

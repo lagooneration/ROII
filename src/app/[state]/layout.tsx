@@ -24,24 +24,17 @@ export const metadata: Metadata = {
   description: "Research Oriented Innovation Incubator",
 };
 
-export default function RootLayout({
+export default function StateLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${bowlby.variable} ${dmMono.variable} antialiased font-mono font-medium text-zinc-800`}
-      >
-        <main>
-        <Header />
-        {children}
-        </main>
-        <SVGFilters />
-        {/* <Footer /> */}
-      </body>
-    </html>
+    <>
+      <Header />
+      {children}
+      <SVGFilters />
+    </>
   );
 }
 

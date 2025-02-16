@@ -4,7 +4,7 @@ import Link from 'next/link'
 import React from 'react'
 import { Logo } from './Logo'
 import { NAVIGATION } from '@/constants/navigation'
-
+import { ButtonLink } from './ButtonLink'
 export function Header() {
   return (
     <header className="header absolute left-0 right-0 top-0 z-50 ~h-32/48 ~px-4/6 ~py-4/6 hd:h-32">
@@ -27,7 +27,9 @@ export function Header() {
             </ul>
         </nav>
         <div className="justify-self-end">
-            <button className="bg-brand-purple text-white px-4 py-2 rounded-md">Know More</button>
+            <ButtonLink href="/some-path" theme="purple" size="md" icon="whatsapp">
+                Reach Out
+            </ButtonLink>
         </div>
       </div>
     </header>
