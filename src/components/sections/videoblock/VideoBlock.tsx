@@ -14,6 +14,9 @@ const MASK_CLASSES =
 /**
  * Component for "VideoBlock" Slices.
  */
+
+const youtubeId = "PpLecrTZOOQ";
+
 const VideoBlock = (): JSX.Element => {
   return (
     <Bounded
@@ -42,7 +45,7 @@ const VideoBlock = (): JSX.Element => {
         />
         {/* Video */}
         <div className={clsx(MASK_CLASSES, "relative h-full")}>
-          <LazyYouTubePlayer youTubeID="PpLecrTZOOQ" />
+          <LazyYouTubePlayer youTubeID={youtubeId} />
           {/* Texture overlay */}
           <Image
             src="/image-texture.png"

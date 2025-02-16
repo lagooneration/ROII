@@ -1,8 +1,14 @@
 import { notFound } from 'next/navigation';
 import { STATES } from '@/constants/states';
 import { Metadata } from 'next';
-import { sections } from '@/components/sections';
+// import { sections } from '@/components/sections';
 import { Hero } from '@/components/sections/hero/Hero';
+import VideoBlock from '@/components/sections/videoblock/VideoBlock';
+import CoursesGrid from '@/components/sections/coursesgrid/CoursesGrid';
+import Journey from '@/components/sections/journey/Journey';
+import TeamGrid from '@/components/sections/teamgrid/TeamGrid';
+import { CONSULTANTS } from '@/constants/consultants';
+
 // Define the props type for the page component
 interface StatePageProps {
   params: {
@@ -28,15 +34,30 @@ export default function StatePage({ params }: StatePageProps) {
     notFound();
   }
 
+  // Check if courses_grid exists before accessing it
+  const coursesGridData = 'courses_grid' in stateData.content ? stateData.content.courses_grid : null;
+
+  // Check if journey exists before accessing it
+  const journeyData = 'journey' in stateData.content ? stateData.content.journey : null;
+
+  // Check if teamgrid exists before accessing it
+  const teamGridData = 'teamgrid' in stateData.content ? stateData.content.teamgrid : null;
+
   return (
     <>
-      {/* Dynamic section rendering */}
-      {/* <sections.hero 
-        title={stateData.content.hero.title} 
-        description={stateData.content.hero.description} 
-      />
-      <sections.video_block /> */}
       <Hero title={stateData.content.hero.title} description={stateData.content.hero.description} />
+      {coursesGridData && (
+        <CoursesGrid 
+          heading={coursesGridData.heading} 
+          body={coursesGridData.body} 
+          courses={[...coursesGridData.courses]} // Convert readonly array to mutable array
+        />
+      )}
+      {teamGridData && (
+        <TeamGrid heading={teamGridData.heading} consultants={CONSULTANTS} />
+      )}
+      {/* {journeyData && <Journey slice={journeyData} index={0} />} */}
+      <VideoBlock />
     </>
   );
 }
