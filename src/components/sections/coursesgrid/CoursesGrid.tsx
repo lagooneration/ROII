@@ -1,14 +1,15 @@
+"use client";
 import { JSX } from "react/jsx-runtime";
 import { Bounded } from "@/components/Bounded";
 import { Heading } from "@/components/Heading";
 import { SlideIn } from "@/components/SlideIn";
-import { CoursesJourney } from "./CoursesJourney";
 
 interface Course {
   id: string;
   steps: {
     id: string;
     name: string;
+    seats: number;
   }[];
 }
 
@@ -20,7 +21,10 @@ interface CoursesGridProps {
 
 const CoursesGrid = ({ heading, body, courses }: CoursesGridProps): JSX.Element => {
   return (
-    <Bounded className="bg-white">
+    <Bounded 
+    className="bg-brand-gray relative h-dvh overflow-hidden text-zinc-800 bg-texture"
+    // className="bg-brand-gray bg-texture"
+    >
         <SlideIn>
         <Heading className="text-center ~mb-4/6" as="h2">
          {heading}
@@ -38,13 +42,13 @@ const CoursesGrid = ({ heading, body, courses }: CoursesGridProps): JSX.Element 
           {courses.map((course) => (
             <div 
               key={course.id}
-              className="rounded-lg border border-zinc-200 p-6 hover:border-brand-purple transition-colors"
+              className="bg-white rounded-lg border border-zinc-200 p-6 hover:border-brand-purple transition-colors"
             >
               <h3 className="text-xl font-semibold mb-2">
-                {course.name}
+                {course.steps[0].name}
               </h3>
               <p className="text-zinc-600">
-                {course.steps.length} steps
+                {course.steps[0].seats} seats left
               </p>
             </div>
           ))}

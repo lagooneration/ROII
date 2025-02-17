@@ -2,6 +2,7 @@ import { State } from '@/types';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import { useRef, useEffect } from 'react';
+import VideoBlock from '../sections/videoblock/VideoBlock';
 
 interface StateTemplateProps {
   stateData: State;
@@ -30,6 +31,7 @@ export default function StateTemplate({ stateData }: StateTemplateProps) {
         </p>
       </section>
       {/* Add more sections as needed */}
+      <VideoBlock />
     </div>
   );
 }

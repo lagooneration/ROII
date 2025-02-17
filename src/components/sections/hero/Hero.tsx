@@ -1,11 +1,16 @@
+import dynamic from 'next/dynamic';
 import { Bounded } from "@/components/Bounded";
 import { ButtonLink } from "@/components/ButtonLink";
 import { Heading } from "@/components/Heading";
 import { TallLogo } from "@/components/TallLogo";
 // import { Pendulum } from "@/components/ui/Pendulum";
 import { WideLogo } from "@/components/WideLogo";
-import { Experience } from "./Experience";
+// import { Experience } from "./Experience";
 
+const Experience = dynamic(() => import('@/components/sections/hero/Experience').then(mod => mod.Experience), {
+  ssr: false,
+  loading: () => null
+});
 interface HeroProps {
   title: string;
   description: string;
@@ -15,7 +20,7 @@ interface HeroProps {
   };
 }
 
-export function Hero({ title, description, button }: HeroProps) {
+export default function Hero({ title, description, button }: HeroProps) {
   if (!button?.href) {
     return null;
   }
@@ -50,17 +55,17 @@ export function Hero({ title, description, button }: HeroProps) {
         </div>
       </div>
       {/* <Experience
-        position={[0.6, -.3, 0.3]}
-        rotation={[0, -Math.PI/4, 0]}
-        scale={.06}
-      /> */}
+          position={[0.6, -.1, 0.3]}
+          rotation={[0, -Math.PI/4, 0]}
+          scale={.06}
+        /> */}
     </Bounded>
   );
 }
 
 Hero.defaultProps = {
-  title: "",
-  description: "",
+  title: "asd",
+  description: "asd",
   button: {
     children: "Learn More",
     href: "#",

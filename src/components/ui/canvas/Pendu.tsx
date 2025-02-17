@@ -9,7 +9,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import { useGLTF, useAnimations } from '@react-three/drei'
 import { GLTF } from 'three-stdlib'
 
-type PendulumProps = {
+type PenduProps = {
   position: [number, number, number]
   rotation: [number, number, number]
   scale: number
@@ -55,7 +55,7 @@ type GLTFResult = GLTF & {
 type ActionName = 'Take 001'
 type GLTFActions = Record<ActionName, THREE.AnimationAction>
 
-export function Pendulum({position, rotation, scale}: PendulumProps) {
+export function Pendu({position, rotation, scale}: PenduProps) {
   const group = useRef<THREE.Group>(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const { nodes, materials, animations } = useGLTF('/untitled.gltf') as GLTFResult
